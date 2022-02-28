@@ -26,14 +26,13 @@ namespace _03.kanban.Data.Repository
 
         public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> express, string[] includes = null)
         {
-            return await dbSet.AsNoTracking().Where(express).ToListAsync();
-        }
+            var query = dbSet.AsNoTracking().Where(express);
+            if (!String.IsNullOrEmpty(includes))
+                query = query.DynamicInclude(includes);
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync(string[] includes = null)
-        {
-            return await dbSet.AsNoTracking().ToListAsync();
+            return await query.ToListAsync();
         }
-
+     
         public async Task<TEntity> GetByIdAsync(long id)
         {
             return await dbSet.FindAsync(id);
