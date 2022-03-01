@@ -1,9 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "+AA58aL+FTxPrLg9C+cjyUxDYtTNAD7whncbf1rGo0/TK9rFTOryZOfi8uO7otReCP//9HDrrc6htxSwocdZGg==",
+  "dgSpecHash": "0AQw/yyO+SImZd/yVoW+oiXZSYMI+GqPcdMEDp032tOIDTAz2ALRWLsZwt4QRbPwrwbHQ2lrPNZaFboXW6rweQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\maxna\\Documents\\Projetos\\kanban\\kanban\\_02.kanban.Application\\kanban.Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\maxna\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
+    "C:\\Users\\maxna\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+    "C:\\Users\\maxna\\.nuget\\packages\\fluentvalidation\\10.3.6\\fluentvalidation.10.3.6.nupkg.sha512",
+    "C:\\Users\\maxna\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.6\\fluentvalidation.aspnetcore.10.3.6.nupkg.sha512",
+    "C:\\Users\\maxna\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.3.6\\fluentvalidation.dependencyinjectionextensions.10.3.6.nupkg.sha512",
+    "C:\\Users\\maxna\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\maxna\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.0-preview.1.22076.6\\microsoft.entityframeworkcore.7.0.0-preview.1.22076.6.nupkg.sha512",
     "C:\\Users\\maxna\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.0-preview.1.22076.6\\microsoft.entityframeworkcore.abstractions.7.0.0-preview.1.22076.6.nupkg.sha512",
     "C:\\Users\\maxna\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.0-preview.1.22076.6\\microsoft.entityframeworkcore.analyzers.7.0.0-preview.1.22076.6.nupkg.sha512",

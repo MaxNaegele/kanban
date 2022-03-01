@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace kanban.Core.Entities
+﻿namespace kanban.Core.Entities
 {
     public partial class User
-    {
-        public User()
-        {
-            Boards = new HashSet<Board>();
-            Cards = new HashSet<Card>();
-            Crds = new HashSet<Card>();
-        }
-
+    {    
         public long UseId { get; set; }
         public string UseName { get; set; } = null!;
         public string UseEmail { get; set; } = null!;

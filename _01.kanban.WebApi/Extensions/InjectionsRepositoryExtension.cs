@@ -3,7 +3,7 @@ using _03.kanban.Data.Repository;
 
 namespace _01.kanban.WebApi.Extensions
 {
-    public static class InjectionsExtencionRepository
+    public static class InjectionsRepositoryExtension
     {
         public static void AddInjectionRepository(this IServiceCollection services)
         {

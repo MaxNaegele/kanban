@@ -1,3 +1,4 @@
+using _04.kanban.Core.ModelView.Card;
 using kanban.Core.Entities;
 
 namespace _02.kanban.Application.Interfaces.Application
@@ -5,7 +6,7 @@ namespace _02.kanban.Application.Interfaces.Application
     public interface ICardApplication
     {
         Task<IEnumerable<Card>> FindAll(string search);
-        Task<Card> Create(Card entity);
-        Task<Card> Update(Card entity);
+        Task<Card> Create(CardView model);
+        Task<Card> Update(CardUpdateView model);
     }
 }

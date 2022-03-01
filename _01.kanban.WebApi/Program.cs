@@ -1,5 +1,7 @@
 using _01.kanban.WebApi.Extensions;
 using _03.kanban.Data.Context;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,17 +10,8 @@ builder.Services.AddDbContext<kanbanContext>(options => options.UseNpgsql(builde
 builder.Services.AddInjectionRepository();
 builder.Services.AddInjectionApplication();
 builder.Services.AddJwtAuthentication(builder.Configuration);
-// Add services to the container.
-
-
-builder.Services.AddControllersWithViews(options =>
-{
-   var policy = new AuthorizationPolicyBuilder()
-       .RequireAuthenticatedUser()
-       .Build();
-
-   options.Filters.Add(new AuthorizeFilter(policy));
-});
+builder.Services.AddValidators();
+builder.Services.AddAutoMapperExtension();
 
 
 var app = builder.Build();
@@ -37,6 +30,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
-app.MapFallbackToFile("index.html");;
+app.MapFallbackToFile("index.html"); ;
 
 app.Run();

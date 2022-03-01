@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-namespace _03.kanban.Data.Extension
+namespace _03.kanban.Data.Extension;
 
  public static class QueryWithDynamicInclude
     {

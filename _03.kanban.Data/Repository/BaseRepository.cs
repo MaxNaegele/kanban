@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using _02.kanban.Application.Interfaces.Repository;
 using _03.kanban.Data.Context;
+using _03.kanban.Data.Extension;
 using Microsoft.EntityFrameworkCore;
 
 namespace _03.kanban.Data.Repository
@@ -24,7 +25,12 @@ namespace _03.kanban.Data.Repository
             return true;
         }
 
-        public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> express, string[] includes = null)
+        public async Task<IEnumerable<TEntity>> FindAllAsync()
+        {
+            return await dbSet.AsNoTracking().ToListAsync();
+        }
+
+        public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> express, string includes = null)
         {
             var query = dbSet.AsNoTracking().Where(express);
             if (!String.IsNullOrEmpty(includes))

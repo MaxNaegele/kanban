@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace kanban.Core.Entities
+﻿namespace kanban.Core.Entities
 {
     public partial class Board
     {
-        public Board()
-        {
-            Groups = new HashSet<Group>();
-        }
-
+      
         public long BrdId { get; set; }
         public long UseId { get; set; }
         public string BrdName { get; set; } = null!;

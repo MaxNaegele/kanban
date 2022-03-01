@@ -1,28 +1,40 @@
-namespace _01.kanban.WebApi.Extensions
+using System.Text;
+using _02.kanban.Application.Interfaces.Services;
+using _03.kanban.Data.Service;
+using _04.kanban.Core.Model;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
-   public static class JwtExtensions
+namespace _01.kanban.WebApi.Extensions;
+
+public static class JwtExtensions
+{
+    public static void AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
     {
-        public static void AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
+        services.AddSingleton<IDataUserLogged, DataUserLogged>();
+        services.AddSingleton<ITokenService, TokenService>();
+        services.Configure<JwtOptions>(configuration);
+
+        services.AddAuthentication(options =>
         {
-            services.Configure<JwtOptions>(configuration);
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 
-            services.AddAuthentication(options =>
+        }).AddJwtBearer(options =>
+        {
+            options.RequireHttpsMetadata = false;
+            options.SaveToken = true;
+            options.TokenValidationParameters = new TokenValidationParameters
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration[nameof(JwtOptions.Secret)])),
+                ValidateIssuer = true,
+                ValidIssuer = configuration[nameof(JwtOptions.Issuer)],
+                ValidateAudience = true,
+                ValidAudience = configuration[nameof(JwtOptions.Audience)],
+                ValidateLifetime = true,
+            };
+        });
 
-            }).AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {                  
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration[nameof(JwtOptions.Secret)])),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ValidateIssuerSigningKey = true,
-                    ValidateLifetime = true,
-                    RequireExpirationTime = false,
-                };
-            });
-
-        }
     }
+}

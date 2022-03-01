@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace kanban.Core.Entities
+﻿namespace kanban.Core.Entities
 {
     public partial class Card
     {
-        public Card()
-        {
-            Dpts = new HashSet<Departament>();
-            Uses = new HashSet<User>();
-        }
-
         public long CrdId { get; set; }
         public long UseId { get; set; }
         public long GrpId { get; set; }
