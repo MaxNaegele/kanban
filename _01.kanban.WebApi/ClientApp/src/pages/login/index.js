@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Input, Layout, Row, Button, Col } from 'antd';
 import { UnlockFilled, MailOutlined, UserOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
+import api from '../../services/api'
 import './style.css'
 export default function Login() {
 
@@ -19,7 +20,16 @@ export default function Login() {
 
     };
 
-    const onFinishRecoverPassword = () => { }
+    const onFinishCreateUser = async values => {
+
+        console.log('values', values)
+        let response = await api.post(`User`, values);
+
+        if(response.status === 200){
+            history.push('home/board');
+        }
+
+    }
 
     return (
         <Layout className="h-100p">
@@ -89,7 +99,7 @@ export default function Login() {
                         {recoverPassword &&
                             <Form
                                 name="recoverPassword"
-                                onFinish={onFinishRecoverPassword}>
+                                onFinish={onFinishCreateUser}>
                                 <Row align="middle" justify="center">
                                     <Col span={24}>
                                         <div className="l-l-c" style={{ marginTop: '-80px', background: '#b14e7c' }}></div>
@@ -100,7 +110,7 @@ export default function Login() {
                                         <Form.Item
                                             className="i-s-g"
                                             label=""
-                                            name="useName"
+                                            name="UseName"
                                             rules={[{ required: true, message: 'Informe seu nome.' }]}>
                                             <Input className="i-s-g" placeholder="Informe seu nome" prefix={<UserOutlined />} />
                                         </Form.Item>
@@ -111,7 +121,7 @@ export default function Login() {
                                         <Form.Item
                                             className="i-s-g"
                                             label=""
-                                            name="useEmail"
+                                            name="UseEmail"
                                             rules={[{ required: true, message: 'Informe seu e-mail.' }]}>
                                             <Input className="i-s-g" placeholder="Informe seu e-mail" prefix={<MailOutlined />} />
                                         </Form.Item>
@@ -122,7 +132,7 @@ export default function Login() {
                                         <Form.Item
                                             className="i-s-g"
                                             label=""
-                                            name="usePassword"
+                                            name="UsePassword"
                                             rules={[{ required: true, message: 'Informe uma senha.' }]}>
                                             <Input.Password className="i-s-g" placeholder="Informe uma senha. " prefix={<UnlockFilled />} />
                                         </Form.Item>
@@ -148,7 +158,7 @@ export default function Login() {
                             </Form>
                         }
 
-                    </div>                   
+                    </div>
                 </Row>
             </Layout.Content>
         </Layout>

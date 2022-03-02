@@ -1,11 +1,10 @@
 using _01.kanban.WebApi.Extensions;
 using _03.kanban.Data.Context;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
+string allowSpecificOrigins = "_allowSpecificOrigins";
+builder.Services.AddDefaultCorsPolicy(allowSpecificOrigins);
 builder.Services.AddDbContext<kanbanContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddJwtAuthentication(builder.Configuration.GetSection("JWT"));
 builder.Services.AddInjectionApplication();
@@ -21,6 +20,7 @@ if (!app.Environment.IsDevelopment())
 {
 }
 
+app.UseCors(allowSpecificOrigins);
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();

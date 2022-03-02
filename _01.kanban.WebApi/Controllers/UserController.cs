@@ -28,7 +28,7 @@ public class UserController : ControllerBase
             return Ok(dataUser);
         return Unauthorized();
     }
-    [HttpPost]
+    [HttpPost, AllowAnonymous]
     public async Task<IActionResult> Post([FromBody] UserView user)
     {
         var userInsert = await _IUserApplication.Create(user);
