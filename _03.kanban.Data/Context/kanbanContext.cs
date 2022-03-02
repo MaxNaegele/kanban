@@ -8,6 +8,7 @@ namespace _03.kanban.Data.Context
     {
         public kanbanContext(DbContextOptions<kanbanContext> options) : base(options)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
 
         public virtual DbSet<Board> Boards { get; set; } = null!;
