@@ -14,7 +14,7 @@ public static class JwtExtensions
         services.AddSingleton<IDataUserLogged, DataUserLogged>();
         services.AddSingleton<ITokenService, TokenService>();
         services.Configure<JwtOptions>(configuration);
-
+      
         services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -24,7 +24,7 @@ public static class JwtExtensions
         {
             options.RequireHttpsMetadata = false;
             options.SaveToken = true;
-            options.TokenValidationParameters = new TokenValidationParameters
+             options.TokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration[nameof(JwtOptions.Secret)])),
@@ -32,8 +32,8 @@ public static class JwtExtensions
                 ValidIssuer = configuration[nameof(JwtOptions.Issuer)],
                 ValidateAudience = true,
                 ValidAudience = configuration[nameof(JwtOptions.Audience)],
-                ValidateLifetime = true,
-            };
+                ValidateLifetime = true
+             };
         });
 
     }

@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<kanbanContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddInjectionRepository();
+builder.Services.AddJwtAuthentication(builder.Configuration.GetSection("JWT"));
 builder.Services.AddInjectionApplication();
-builder.Services.AddJwtAuthentication(builder.Configuration);
-builder.Services.AddValidators();
+builder.Services.AddInjectionRepository();
 builder.Services.AddAutoMapperExtension();
+builder.Services.AddValidators();
 
 
 var app = builder.Build();

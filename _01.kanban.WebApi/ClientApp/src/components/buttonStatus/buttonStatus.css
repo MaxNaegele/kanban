@@ -1,0 +1,27 @@
+.btn-status-danger {
+    padding: 0 5px;
+    cursor: none;
+    border: none;
+    color: #fff;
+    background: #A31E20;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 3px;
+}
+.btn-status-warning {
+    padding: 0 5px;
+    cursor: none;
+    border: none;
+    color: #000000B3;
+    background: #F7E702;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 3px;
+}
+.btn-status-success {
+    padding: 0 5px;
+    cursor: none;
+    border: none;
+    color: #fff;
+    background: #107154;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 3px;
+}

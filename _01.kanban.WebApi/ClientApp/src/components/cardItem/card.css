@@ -1,0 +1,138 @@
+.container-master-card {
+    display: flex;
+    min-height: 248px;
+    width: 100%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 5px;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.container-card {
+    padding: 8px 20px;
+}
+
+.head01 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.head02 {
+    border: 1px solid #00000080;
+    border-radius: 3px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.head03 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.font-label1 {
+    font-size: 14px;
+    color: #000000E6 !important;
+    font-weight: bold;
+}
+
+.font-label01 {
+    font-size: 11px;
+    color: #00000080;
+    font-weight: bold;
+}
+
+.container-card small {
+    font-size: 10px;
+    color: #00000080;
+}
+
+.container-card p {
+    font-size: 12px;
+    color: #000000B3;
+    width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.span {
+    color: #00000080;
+}
+
+.titl01 {
+    display: flex;
+    flex-direction: row;
+}
+
+.prj01 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.prj02 {
+    display: flex;
+    flex-direction: column;
+}
+
+.prj03 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.prj04 {
+    display: flex;
+    flex-direction: row;
+}
+
+.prj05 {
+    display: flex;
+    align-items: flex-end;
+    margin-right: 4px;
+    padding: 5px 0;
+}
+
+.m-g-l {
+    margin-left: 2px;
+}
+
+.bd01 {
+    display: flex;
+    flex-direction: row;
+}
+
+.lettered-avatar {
+    font-size: 10px !important;
+    text-align: center !important;
+    padding: 0 !important;
+}
+
+.line-vertical {
+    overflow: hidden;
+    color: #0000004D;
+    font-size: 10px;
+}
+
+.line-vertical:before {
+    background-color: #0000004D;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+}
+
+.line-vertical:after {
+    background-color: #0000004D;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+}

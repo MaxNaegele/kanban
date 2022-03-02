@@ -10,9 +10,8 @@ namespace _01.kanban.WebApi.Extensions
             services.AddScoped<IUserApplication, UserApplication>();
             services.AddScoped<IBoardApplication, BoardApplication>();
             services.AddScoped<ICardApplication, CardApplication>();
-            services.AddScoped<IDepartamentApplication, IDepartamentApplication>();
+            services.AddScoped<IDepartamentApplication, DepartamentApplication>();
             services.AddScoped<IStatusApplication, StatusApplication>();
-            services.AddScoped<IUserApplication, UserApplication>();
         }
     }
 }

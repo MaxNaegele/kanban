@@ -1,22 +1,38 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
-
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import ptBR from 'antd/es/locale/pt_BR';
+import { ConfigProvider } from 'antd';
+import { isAuthenticated } from '../src/services/authorize';
+import {
+  Home,
+  Login,
+} from './pages';
 import './custom.css'
 
-export default class App extends Component {
-  static displayName = App.name;
+const PrivateRoute = ({ Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props => 
+      isAuthenticated() ? (
+        <Component {...props} />
+      ) : (
+          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+        )
+    }
+  />
+);
 
+export default class App extends Component {
   render () {
     return (
-      <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetch-data' component={FetchData} />
-      </Layout>
+      <ConfigProvider locale={ptBR} componentSize="middle">
+      <Router>
+        <Switch>
+          <Route path='/' exact component={Login} />
+          <PrivateRoute path="/home" component={Home} />
+        </Switch>
+      </Router>
+    </ConfigProvider>
     );
   }
 }

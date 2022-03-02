@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    background: #8CC587 0% 0% no-repeat padding-box; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    border-radius: 15px;
+    width: 200px;
+    cursor: pointer;
+    box-shadow: 0px 8px 8px #00000029;
+    margin: 5px;
+}
+
+.container span{
+    color: #fff;
+    font-size: 18px;
+}
