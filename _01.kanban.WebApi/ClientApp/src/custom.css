@@ -11,6 +11,10 @@ body{
   font-size: 100%;
 }
 
+.header{
+  box-shadow: none !important;
+}
+
 a {
   color: #0366d6;
 }
