@@ -33,13 +33,13 @@
 }
 
 .font-label1 {
-    font-size: 14px;
+    font: normal normal 600 14px/18px Montserrat;
     color: #000000E6 !important;
     font-weight: bold;
 }
 
 .font-label01 {
-    font-size: 11px;
+    font: normal normal 600 16px/18px Montserrat;
     color: #00000080;
     font-weight: bold;
 }
