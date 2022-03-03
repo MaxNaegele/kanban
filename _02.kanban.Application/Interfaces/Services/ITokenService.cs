@@ -4,6 +4,6 @@ namespace _02.kanban.Application.Interfaces.Services
 {
     public interface ITokenService
     {
-          string GenerateToken(DataUser user);
+         string GenerateToken(DataUser user);
     }
 }

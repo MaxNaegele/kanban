@@ -1,4 +1,4 @@
-.container-board {
+/* .container-board {
     height: 100%;
     min-width: 333px;
     margin-left: 10px;
@@ -51,4 +51,36 @@
 
 .list-cards {
     padding: 8px;
+}
+ */
+
+ .container {
+    display: flex;
+    background: #8CC587 0% 0% no-repeat padding-box; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    border-radius: 15px;
+    width: 200px;
+    cursor: pointer;
+    box-shadow: 0px 8px 8px #00000029;
+    margin: 5px;
+    color: #fff;
+    font-size: 18px;
+}
+.container-add {
+    background: dodgerblue 0% 0% no-repeat padding-box !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    border-radius: 15px;
+    width: 200px;
+    cursor: pointer;
+    box-shadow: 0px 8px 8px #00000029;
+    margin: 5px; 
+    color: #fff;
+    font-size: 18px;
 }

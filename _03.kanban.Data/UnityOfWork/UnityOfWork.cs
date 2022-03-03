@@ -23,12 +23,13 @@ namespace _03.kanban.Data.UnityOfWork
         public UnityOfWork(kanbanContext context)
         {
             this.context = context;
-            this.iCardRepository = new CardRepository (this.context);
-            this.iDepartamentRepository = new DepartamentRepository (this.context);
-            this.iGroupRepository = new GroupRepository (this.context);
-            this.iStatusRepository = new StatusRepository (this.context);
-            this.iUserRepository = new UserRepository (this.context);
-                    }
+            this.iBoardRepository = new BoardRepository(this.context);
+            this.iCardRepository = new CardRepository(this.context);
+            this.iDepartamentRepository = new DepartamentRepository(this.context);
+            this.iGroupRepository = new GroupRepository(this.context);
+            this.iStatusRepository = new StatusRepository(this.context);
+            this.iUserRepository = new UserRepository(this.context);
+        }
         public async Task CommitAsync()
         {
             await this.context.SaveChangesAsync();

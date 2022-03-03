@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using _02.kanban.Application.Interfaces.Application;
+using _04.kanban.Core.ModelView.Board;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace kanban.WebApi.Controllers;
@@ -7,31 +9,23 @@ namespace kanban.WebApi.Controllers;
 [Route("api/[controller]")]
 public class BoardController : ControllerBase
 {
-    private readonly ILogger<BoardController> _logger;
+    private readonly IBoardApplication _IBoardApplication;
 
-    public BoardController(ILogger<BoardController> logger)
+    public BoardController(IBoardApplication iBoardApplication)
     {
-        _logger = logger;
+        _IBoardApplication = iBoardApplication;
     }
 
     [HttpGet]
-    public IActionResult Get()
+    public async Task<IActionResult> Get()
     {
-       return Ok("List boards ");
+        return Ok(await _IBoardApplication.FindAll());
     }
     [HttpPost]
-    public IActionResult Post()
+    public async Task<IActionResult> Post([FromBody] BoardView board)
     {
-       return Ok("List boards ");
-    }
-    [HttpPut]
-    public IActionResult Update()
-    {
-       return Ok("List boards ");
-    }
-    [HttpDelete]
-    public IActionResult Delete(long id)
-    {
-       return Ok("List boards ");
+       
+        return Ok(await _IBoardApplication.Create(board));
+      
     }
 }

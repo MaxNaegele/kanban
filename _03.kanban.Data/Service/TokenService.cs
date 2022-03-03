@@ -22,10 +22,10 @@ namespace _03.kanban.Data.Service
             var tokenDescriptor = tokenHandler.CreateToken(new SecurityTokenDescriptor
             {
                 Subject = GetClaimsIdentity(user),
-                Audience = _configuration[nameof(JwtOptions.Audience)],
-                Issuer = _configuration[nameof(JwtOptions.Issuer)],
-                Expires = DateTime.UtcNow.AddMinutes(Convert.ToInt32(_configuration[nameof(JwtOptions.Expires)])),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_configuration[nameof(JwtOptions.Secret)])), SecurityAlgorithms.HmacSha512Signature),
+                Audience = _configuration.GetSection("JWT:Audience").Value,
+                Issuer = _configuration.GetSection("JWT:Issuer").Value,
+                Expires = DateTime.UtcNow.AddMinutes(Convert.ToInt32(_configuration.GetSection("JWT:Expires").Value)),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_configuration.GetSection("JWT:Secret").Value)), SecurityAlgorithms.HmacSha512Signature),
             });
             return tokenHandler.WriteToken(tokenDescriptor);
         }

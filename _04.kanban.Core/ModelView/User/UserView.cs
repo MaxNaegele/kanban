@@ -1,9 +1,9 @@
 namespace _04.kanban.Core.ModelView.User
 {
     public class UserView
-    {        
-        public string UseName;
-        public string UseEmail;
-        public string UsePassword;
+    {
+        public string UseName { get; set; }
+        public string UseEmail { get; set; }
+        public string UsePassword { get; set; }
     }
 }

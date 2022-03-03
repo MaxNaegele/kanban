@@ -5,9 +5,9 @@ namespace _02.kanban.Application.Interfaces.Application
 {
     public interface IGroupApplication
     {
-        Task<IEnumerable<Group>> FindAll();
+        Task<IEnumerable<Group>> FindAll(long BrdId);
         Task<Group> Create(GroupView entity);
-        Task<Group> Update(GroupView entity);
-        Task<Group> Delete(long id);
+        Task<Group> Update(GroupUpdateView entity);
+        Task Delete(long id);
     }
 }

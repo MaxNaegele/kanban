@@ -22,6 +22,7 @@ namespace _02.kanban.Application.Implementation
         public async Task<Board> Create(BoardView model)
         {
             var entity = _IMapper.Map<Board>(model);
+            entity.UseId = _IDataUserLogged.GetId();
             var board = await _IUnityOfWork.iBoardRepository.InsertAsync(entity);
             await _IUnityOfWork.CommitAsync();
             return board;

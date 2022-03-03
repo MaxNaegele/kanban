@@ -7,6 +7,7 @@ namespace _01.kanban.WebApi.Extensions
     {
         public static void AddInjectionApplication(this IServiceCollection services)
         {
+            services.AddScoped<IGroupApplication, GroupApplication>();
             services.AddScoped<IUserApplication, UserApplication>();
             services.AddScoped<IBoardApplication, BoardApplication>();
             services.AddScoped<ICardApplication, CardApplication>();

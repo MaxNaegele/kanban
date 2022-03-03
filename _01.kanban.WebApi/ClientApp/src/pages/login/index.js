@@ -1,33 +1,54 @@
 import React, { useState } from "react";
-import { Form, Input, Layout, Row, Button, Col } from 'antd';
+import { Form, Input, Layout, Row, Button, Col, Alert } from 'antd';
 import { UnlockFilled, MailOutlined, UserOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
-import api from '../../services/api'
-import './style.css'
+import { setToken } from '../../services/authorize';
+import api from '../../services/api';
+import './style.css';
 export default function Login() {
 
     const [form] = Form.useForm();
     const history = useHistory();
     const [visible, setVisible] = useState(false);
     const [loadLogin, setLoadLogin] = useState(false);
-    const [recoverPassword, setRecoverPassword] = useState(false);
+    const [loadRegister, setLoadRegister] = useState(false);
 
-    const [formUser] = Form.useForm();
-
-    const executLogin = ({ email, password }) => {
+    const executLogin = values => {
         setLoadLogin(true);
         history.push('home/board');
+
+        setLoadRegister(true);
+        api.post(`User/Login`, values).then(response => {
+            console.log('response', response);
+            if (response.status === 201) {
+                setToken(response.data);
+                history.push('home/board');
+            } else if (response.status === 401) {
+                Alert("Usuário ou senha inválidos!");
+            }
+            else {
+                Alert("Não foi possível localizar seu usuário no momento!");
+            }
+        }).catch(e => {
+            console.log('e.erros', e)
+        }).finally(() => setLoadLogin(false));
 
     };
 
     const onFinishCreateUser = async values => {
-
-        console.log('values', values)
-        let response = await api.post(`User`, values);
-
-        if(response.status === 200){
-            history.push('home/board');
-        }
+        setLoadRegister(true);
+        api.post(`User`, values).then(response => {
+            console.log('response', response);
+            if (response.status === 201) {
+                setToken(response.data);
+                history.push('home/board');
+            } else {
+                Alert("Não foi possível criar seu usuário neste momento!");
+            }
+        }).catch(e => {
+            console.log('e.erros', e)
+            Alert("Não foi possível criar seu usuário neste momento!");
+        }).finally(() => setLoadRegister(false));
 
     }
 
@@ -45,7 +66,7 @@ export default function Login() {
                 </Row>
                 <Row justify="center" style={{ marginTop: "2%" }}>
                     <div className="login-form">
-                        {recoverPassword === false && <Form
+                        {visible === false && <Form
                             form={form}
                             onFinish={executLogin}>
                             <Row align="middle" justify="center">
@@ -87,7 +108,7 @@ export default function Login() {
                             <Row align="middle" justify="center">
                                 <Col span={24}>
                                     <Form.Item>
-                                        <Button className="e-s-l" type="link" onClick={() => setRecoverPassword(true)}>
+                                        <Button className="e-s-l" type="link" onClick={() => setVisible(true)}>
                                             Não possui conta? Cadastre-se aqui.
                                         </Button>
                                     </Form.Item>
@@ -96,7 +117,7 @@ export default function Login() {
                             </Row>
                         </Form>}
 
-                        {recoverPassword &&
+                        {visible &&
                             <Form
                                 name="recoverPassword"
                                 onFinish={onFinishCreateUser}>
@@ -142,14 +163,14 @@ export default function Login() {
                                 <Row align="middle" justify="space-around">
                                     <Col span={6}>
                                         <Form.Item>
-                                            <Button onClick={() => setRecoverPassword(false)}>
+                                            <Button onClick={() => setVisible(false)}>
                                                 VOLTAR
                                             </Button>
                                         </Form.Item>
                                     </Col>
                                     <Col span={14} offset={4}>
                                         <Form.Item>
-                                            <Button type="primary" htmlType="submit" className="s-b-l">
+                                            <Button disabled={loadRegister} loading={loadRegister} type="primary" htmlType="submit" className="s-b-l">
                                                 CADASTRAR
                                             </Button>
                                         </Form.Item>

@@ -26,8 +26,8 @@ export default function Index() {
                     <HashRouter>
                         <Switch>
                             <Route>
-                                <Route exact path='/' component={Group}></Route>
-                                <Route exact path='/board' component={Board}></Route>
+                                <Route exact path='/' component={Board}></Route>
+                                <Route exact path='/Group' component={Group}></Route>
                             </Route>
                         </Switch>
                     </HashRouter>

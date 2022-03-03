@@ -5,8 +5,8 @@ namespace _02.kanban.Application.Interfaces.Application
 {
     public interface IUserApplication
     {
-        Task<User> ExecuteLogin(string email, string password);
+        Task<string> ExecuteLogin(string email, string password);
         Task<User> GetUser();
-        Task<User> Create(UserView model);    
+        Task<string> Create(UserView model);    
     }
 }

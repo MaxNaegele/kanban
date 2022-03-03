@@ -15,17 +15,17 @@ public class UserController : ControllerBase
         _IUserApplication = iUserApplication;
     }
 
-    [HttpGet]
+    [HttpGet, AllowAnonymous]
     public async Task<IActionResult> Get()
     {
         return Ok(await _IUserApplication.GetUser());
     }
     [HttpPost, Route("Login"), AllowAnonymous]
-    public async Task<IActionResult> Login([FromBody] UserView user)
+    public async Task<IActionResult> Login([FromBody] UserLoginView login)
     {
-        var dataUser = await _IUserApplication.ExecuteLogin(user.UseEmail, user.UsePassword);
-        if (dataUser is not null)
-            return Ok(dataUser);
+        var token = await _IUserApplication.ExecuteLogin(login.Email, login.Password);
+        if (token is not null)
+            return Ok(token);
         return Unauthorized();
     }
     [HttpPost, AllowAnonymous]

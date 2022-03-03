@@ -20,6 +20,7 @@ namespace _01.kanban.WebApi.Extensions
                 })
             .AddFluentValidation(p =>
           {
+              p.RegisterValidatorsFromAssemblyContaining<UserViewValidator>();
               p.RegisterValidatorsFromAssemblyContaining<BoardViewValidator>();
               p.RegisterValidatorsFromAssemblyContaining<CardViewValidator>();
               p.RegisterValidatorsFromAssemblyContaining<CardUpdateViewValidator>();
@@ -27,7 +28,6 @@ namespace _01.kanban.WebApi.Extensions
               p.RegisterValidatorsFromAssemblyContaining<GroupViewValidator>();
               p.RegisterValidatorsFromAssemblyContaining<StatusViewValidator>();
               p.RegisterValidatorsFromAssemblyContaining<StatusViewValidator>();
-              p.RegisterValidatorsFromAssemblyContaining<UserViewValidator>();
               p.ValidatorOptions.LanguageManager.Culture = new CultureInfo("pt-BR");
           });
         }

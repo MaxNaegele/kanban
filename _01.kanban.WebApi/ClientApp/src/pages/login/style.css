@@ -97,14 +97,19 @@
     background: #8CC587 !important;
 }
 
-.i-s-g{
+.i-s-g {
     background: '#f9f4f8' !important;
     padding: 10px !important;
     min-width: 250px !important;
-    color: #777775 !important;
+    /* color: #777775 !important; */
     margin-bottom: 0px !important;
     border-radius: 8px !important;
     padding: 10 !important;
+}
+.i-s-g ::placeholder {
+ 
+    color: #111636 !important;
+
 }
 
 .i-s-g input{
