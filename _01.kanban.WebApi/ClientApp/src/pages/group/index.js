@@ -37,7 +37,7 @@ export default function Index() {
 
     return (
         <div className='container-group'>
-            {groups.map((data, idx) => <Group key={idx} title={"teste"} time="2" quantity={3} />)}
+            {groups.map((data, idx) => <Group key={idx} title={data.grpTitle} time="2" quantity={3} />)}
 
             <AddGroup title="Add Card + " onHandleClick={() => setVisibleModal(true)} />
 
