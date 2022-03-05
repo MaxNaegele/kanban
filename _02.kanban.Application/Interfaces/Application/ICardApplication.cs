@@ -5,7 +5,7 @@ namespace _02.kanban.Application.Interfaces.Application
 {
     public interface ICardApplication
     {
-        Task<IEnumerable<Card>> FindAll(string search);
+        Task<IEnumerable<Card>> FindAll(long grpId);
         Task<Card> Create(CardView model);
         Task<Card> Update(CardUpdateView model);
     }

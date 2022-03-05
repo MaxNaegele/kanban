@@ -12,7 +12,8 @@ namespace _02.kanban.Application.Mappings
             CreateMap<User, DataUser>()
             .ForMember(dst => dst.Id, map => map.MapFrom(x=> x.UseId))
             .ForMember(dst => dst.Email, map => map.MapFrom(x=> x.UseEmail))
-            .ForMember(dst => dst.Name, map => map.MapFrom(x=> x.UseName));
+            .ForMember(dst => dst.Name, map => map.MapFrom(x=> x.UseName))
+            .ReverseMap();
         }
     }
 }

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Form, Input, Layout, Row, Button, Col, Alert } from 'antd';
+import { Form, Input, Layout, Row, Button, Col } from 'antd';
 import { UnlockFilled, MailOutlined, UserOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
 import { setToken } from '../../services/authorize';
 import api from '../../services/api';
 import './style.css';
+import logo from '../../assets/logo4@2x.png';
 export default function Login() {
 
     const [form] = Form.useForm();
@@ -15,21 +16,20 @@ export default function Login() {
 
     const executLogin = values => {
         setLoadLogin(true);
-        history.push('home/board');
-
-        setLoadRegister(true);
         api.post(`User/Login`, values).then(response => {
             console.log('response', response);
-            if (response.status === 201) {
+            if (response.status === 201 || response.status === 200) {
                 setToken(response.data);
                 history.push('home/board');
             } else if (response.status === 401) {
-                Alert("Usuário ou senha inválidos!");
+                alert("Usuário ou senha inválidos, tente novamente!");
             }
             else {
-                Alert("Não foi possível localizar seu usuário no momento!");
+                alert("Não foi possível localizar seu usuário no momento!");
             }
         }).catch(e => {
+            alert("Usuário ou senha inválidos!");
+
             console.log('e.erros', e)
         }).finally(() => setLoadLogin(false));
 
@@ -43,11 +43,11 @@ export default function Login() {
                 setToken(response.data);
                 history.push('home/board');
             } else {
-                Alert("Não foi possível criar seu usuário neste momento!");
+                alert("Não foi possível criar seu usuário neste momento!");
             }
         }).catch(e => {
             console.log('e.erros', e)
-            Alert("Não foi possível criar seu usuário neste momento!");
+            alert("Não foi possível criar seu usuário neste momento!");
         }).finally(() => setLoadRegister(false));
 
     }
@@ -59,8 +59,8 @@ export default function Login() {
                 <Row style={{ marginTop: "10%", textAlign: 'center' }} justify="center">
 
                     <Col span="24" style={{ zIndex: 10 }}>
-                        <div className="u-i-l">
-                            <UserOutlined />
+                            <img className="u-i-l"  src={logo} />
+                        <div >
                         </div>
                     </Col>
                 </Row>

@@ -10,6 +10,9 @@ namespace _02.kanban.Application.Mappings
         {
             CreateMap<UserView, User>()
             .ForMember(dst => dst.UseCreateDate, map=> map.MapFrom(_ => DateTime.Now));
+
+            CreateMap<DataUserView, User>()
+            .ForMember(dst => dst.UseId, map => map.MapFrom(x=> x.Id));            
         }
     }
 }

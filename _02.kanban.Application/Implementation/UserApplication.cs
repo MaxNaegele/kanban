@@ -46,9 +46,16 @@ namespace _02.kanban.Application.Implementation
             return _ITokenService.GenerateToken(dataUser);
         }
 
-        public async Task<User> GetUser()
+        public async Task<IEnumerable<DataUser>> GetAllUser()
         {
-            return await _IUnityOfWork.iUserRepository.GetByIdAsync(_IDataUserLogged.GetId());
+            var list = await _IUnityOfWork.iUserRepository.FindAllAsync();
+            return _IMapper.Map<List<DataUser>>(list);
+        }
+
+        public async Task<DataUser> GetUser()
+        {
+            var user = await _IUnityOfWork.iUserRepository.GetByIdAsync(_IDataUserLogged.GetId());
+            return _IMapper.Map<DataUser>(user);
         }
 
         private string ContertPasswordHash(string value)

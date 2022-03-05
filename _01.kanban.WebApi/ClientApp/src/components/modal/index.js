@@ -41,7 +41,7 @@ export default function Index({ title, label, name, onSave, showModal, closeModa
             onOk={() => form.submit()}
             okText={
                 <>
-                    <CheckOutlined /> Definir
+                    <CheckOutlined /> Salvar
                 </>
             }
             cancelText={
@@ -54,7 +54,7 @@ export default function Index({ title, label, name, onSave, showModal, closeModa
             <div>
                 <Form layout="vertical" form={form} name="formModal" onFinish={onFinish}>
                     <Row align="middle" gutter={[8, 0]}>
-                        <Col span={12}>
+                        <Col span={18}>
                             <Form.Item
                                 rules={[{ required: true, message: `${label} deve ser informado!` }]}
                                 name={name}

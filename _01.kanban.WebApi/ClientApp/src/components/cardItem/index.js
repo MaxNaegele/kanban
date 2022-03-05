@@ -3,7 +3,7 @@ import './card.css';
 import { CalendarOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import LetteredAvatar from 'react-lettered-avatar';
 import { ButtonStatus } from '../../components';
-export default function Index() {
+export default function Index({ data: { } }) {
     return (
         <div className="container-master-card">
             <div className="container-card">
@@ -54,7 +54,7 @@ export default function Index() {
                         </div>
                     </div>
                     <div className="head03">
-                        <ButtonStatus description={"EM ATRASO"}  />
+                        <ButtonStatus description={"EM ATRASO"} />
                     </div>
                 </div>
                 <div className="prj01">

@@ -38,22 +38,22 @@ namespace _03.kanban.Data.Repository
 
             return await query.ToListAsync();
         }
-     
+
         public async Task<TEntity> GetByIdAsync(long id)
         {
             return await dbSet.FindAsync(id);
         }
 
-        public async Task<TEntity> InsertAsync(TEntity entity)
+        public virtual async Task<TEntity> InsertAsync(TEntity entity)
         {
             await dbSet.AddAsync(entity);
             return entity;
         }
 
-        public TEntity UpdateAsync(TEntity entity)
-        {
+        public virtual TEntity UpdateAsync(TEntity entity)
+        {           
             dbSet.Update(entity);
-            return entity;
+            return  entity;
         }
     }
 }

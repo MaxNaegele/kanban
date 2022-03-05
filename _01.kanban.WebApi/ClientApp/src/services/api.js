@@ -12,7 +12,16 @@ api.interceptors.request.use(config => {
 api.interceptors.response.use(function (response) {
     return response;
 }, function (error) {
-    console.error("Error request ", error)
+    console.error("Error request ", error);
+    if (error.response) {
+        switch (error.response.status) {
+          case 401:
+            window.location.href = window.location.origin;
+            break;
+          default:
+            break;
+        }
+      }
     return Promise.reject(error);
 });
 

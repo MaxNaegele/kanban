@@ -1,7 +1,7 @@
 .container-master-card {
     display: flex;
     min-height: 248px;
-    width: 100%;
+    min-width: 100%;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 5px;

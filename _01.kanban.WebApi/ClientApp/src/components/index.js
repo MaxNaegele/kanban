@@ -7,3 +7,4 @@ export { default as AddGroup } from './group/add';
 export { default as LetterAvatar } from './letterAvatar/index';
 export { default as ButtonStatus } from './buttonStatus/index';
 export { default as Modal } from './modal/index';
+export { default as ModalCard } from './modal/modalCard';

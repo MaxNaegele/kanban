@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import ptBR from 'antd/es/locale/pt_BR';
 import { ConfigProvider } from 'antd';
@@ -12,20 +12,26 @@ import './custom.css'
 const PrivateRoute = ({ Component, ...rest }) => (
   <Route
     {...rest}
-    render={props => 
+    render={props =>
       isAuthenticated() ? (
         <Component {...props} />
       ) : (
-          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-        )
+        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+      )
     }
   />
 );
 
-export default class App extends Component {
-  render () {
-    return (
-      <ConfigProvider locale={ptBR} componentSize="middle">
+export default function App() {
+
+  // useEffect(() => {
+  //   window.process = {
+  //     ...window.process,
+  //   };
+  // }, []);
+
+  return (
+    <ConfigProvider locale={ptBR} componentSize="middle">
       <Router>
         <Switch>
           <Route path='/' exact component={Login} />
@@ -33,6 +39,6 @@ export default class App extends Component {
         </Switch>
       </Router>
     </ConfigProvider>
-    );
-  }
+  );
+
 }

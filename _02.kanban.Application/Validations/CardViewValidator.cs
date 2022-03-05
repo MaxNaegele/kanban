@@ -8,10 +8,9 @@ namespace _02.kanban.Application.Validations
      public CardViewValidator()
      {
          RuleFor(x=> x.GrpId).NotNull().NotEmpty();
-         RuleFor(x=> x.SttId).NotNull().NotEmpty();
-         RuleFor(x=> x.CrdSequence).NotNull().NotEmpty().LessThan(1);
+         RuleFor(x=> x.CrdSequence).NotNull().NotEmpty().GreaterThan(0);
          RuleFor(x=> x.CrdTitle).NotNull().NotEmpty();
-         RuleFor(x=> x.CrdExpectedDate).NotNull().NotEmpty().LessThan(DateTime.Now);
+         RuleFor(x=> x.CrdExpectedDate).NotNull().NotEmpty().GreaterThan(DateTime.Now.AddDays(-1));
      }
     }
 }

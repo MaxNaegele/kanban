@@ -22,15 +22,15 @@ namespace _02.kanban.Application.Implementation
         public async Task<Card> Create(CardView model)
         {
             var entity = _IMapper.Map<Card>(model);
+            entity.UseId = _IDataUserLogged.GetId();
             var card = await _IUnityOfWork.iCardRepository.InsertAsync(entity);
             await _IUnityOfWork.CommitAsync();
             return card;
         }
 
-        public async Task<IEnumerable<Card>> FindAll(string search)
+        public async Task<IEnumerable<Card>> FindAll(long grpId)
         {
-            return await _IUnityOfWork.iCardRepository.FindAsync(x => x.UseId == _IDataUserLogged.GetId() && x.CrdTitle.Contains(search));
-
+            return await _IUnityOfWork.iCardRepository.FindAsync(x => x.UseId == _IDataUserLogged.GetId() && x.GrpId == grpId);
         }
 
         public async Task<Card> Update(CardUpdateView model)
@@ -38,7 +38,7 @@ namespace _02.kanban.Application.Implementation
             var cardResult = await _IUnityOfWork.iCardRepository.FindAsync(x => x.UseId == _IDataUserLogged.GetId() && x.CrdId == model.CrdId);
             if (cardResult is null)
                 return null;
-                
+
             var entity = _IMapper.Map<Card>(model);
             var card = _IUnityOfWork.iCardRepository.UpdateAsync(entity);
             await _IUnityOfWork.CommitAsync();

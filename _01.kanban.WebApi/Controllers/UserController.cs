@@ -15,11 +15,7 @@ public class UserController : ControllerBase
         _IUserApplication = iUserApplication;
     }
 
-    [HttpGet, AllowAnonymous]
-    public async Task<IActionResult> Get()
-    {
-        return Ok(await _IUserApplication.GetUser());
-    }
+
     [HttpPost, Route("Login"), AllowAnonymous]
     public async Task<IActionResult> Login([FromBody] UserLoginView login)
     {
@@ -33,5 +29,15 @@ public class UserController : ControllerBase
     {
         var userInsert = await _IUserApplication.Create(user);
         return CreatedAtAction(nameof(Get), new { login = user.UseEmail }, userInsert);
+    }
+    [HttpGet]
+    public async Task<IActionResult> Get()
+    {
+        return Ok(await _IUserApplication.GetUser());
+    }
+    [HttpGet, Route("GetAll")]
+    public async Task<IActionResult> GetAll()
+    {
+        return Ok(await _IUserApplication.GetAllUser());
     }
 }
