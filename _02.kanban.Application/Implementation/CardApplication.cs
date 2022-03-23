@@ -28,9 +28,10 @@ namespace _02.kanban.Application.Implementation
             return card;
         }
 
-        public async Task<IEnumerable<Card>> FindAll(long grpId)
+        public async Task<IEnumerable<CardResponseView>> FindAll(long grpId)
         {
-            return await _IUnityOfWork.iCardRepository.FindAsync(x => x.UseId == _IDataUserLogged.GetId() && x.GrpId == grpId);
+
+            return _IMapper.Map<IEnumerable<CardResponseView>>(await _IUnityOfWork.iCardRepository.FindAsync(x => x.UseId == _IDataUserLogged.GetId() && x.GrpId == grpId, "Stt;Dpts"));
         }
 
         public async Task<Card> Update(CardUpdateView model)
@@ -42,7 +43,7 @@ namespace _02.kanban.Application.Implementation
             var entity = _IMapper.Map<Card>(model);
             var card = _IUnityOfWork.iCardRepository.UpdateAsync(entity);
             await _IUnityOfWork.CommitAsync();
-            return card;
+             return card;
         }
     }
 }

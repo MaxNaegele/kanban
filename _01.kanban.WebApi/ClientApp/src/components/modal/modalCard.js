@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { Row, Col, Form, Input, Modal, Select, TimePicker, DatePicker } from "antd";
 import { ExclamationCircleOutlined, CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
-export default function Index({ form, onSave, team, showModal, closeModal, grpId }) {
+export default function Index({ form, onSave, team, showModal, closeModal, grpId, sequence }) {
 
 
     const inputLabel = useRef(null);
@@ -30,7 +30,9 @@ export default function Index({ form, onSave, team, showModal, closeModal, grpId
 
     const onFinish = values => {
         values.GrpId = grpId;
+        values.CrdSequence = sequence;
         onSave(values);
+        closeModal();
         // form.resetFields();
     }
 
@@ -64,6 +66,7 @@ export default function Index({ form, onSave, team, showModal, closeModal, grpId
                     </Col>
                     <Col span={6}>
                         <Form.Item
+                        rules={[{ required: true, message: `Selecione o status!` }]}
                             name="SttId"
                             label="Status:">
                             <Select allowClear >

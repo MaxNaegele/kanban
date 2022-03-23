@@ -45,8 +45,9 @@
     background: #B9C5B9 0% 0% no-repeat padding-box;
     box-shadow: 0px 8px 8px #00000029;
     border-radius: 8px;
-    height: 85vh;
+    min-height: 100%;
     width: 325px;
+ 
 }
 
 .list-cards {

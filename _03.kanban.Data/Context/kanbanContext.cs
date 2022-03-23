@@ -6,7 +6,7 @@ namespace _03.kanban.Data.Context
 {
     public class kanbanContext : DbContext
     {
-        public kanbanContext(DbContextOptions<kanbanContext> options) : base(options)
+        public kanbanContext(DbContextOptions options) : base(options)
         {
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }

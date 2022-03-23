@@ -1,11 +1,14 @@
 using _01.kanban.WebApi.Extensions;
-using _03.kanban.Data.Context;
-using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
+
 string allowSpecificOrigins = "_allowSpecificOrigins";
+
+builder.Services.AddDatabaseConnection(builder.Configuration);
 builder.Services.AddDefaultCorsPolicy(allowSpecificOrigins);
-builder.Services.AddDbContext<kanbanContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddJwtAuthentication(builder.Configuration.GetSection("JWT"));
 builder.Services.AddInjectionApplication();
 builder.Services.AddInjectionRepository();
@@ -19,6 +22,8 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
 }
+app.UseDatabaseExtencion();
+app.UseSerilogRequestLogging();
 
 app.UseCors(allowSpecificOrigins);
 app.UseStaticFiles();
@@ -27,9 +32,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
-// app.MapControllerRoute(
-//     name: "default",
-//     pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html"); ;
 

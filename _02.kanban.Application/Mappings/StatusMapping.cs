@@ -8,7 +8,7 @@ namespace _02.kanban.Application.Mappings
     {
         public StatusMapping()
         {
-            CreateMap<StatusView, Status>();
+            CreateMap<StatusView, Status>().ReverseMap();
         }
     }
 }

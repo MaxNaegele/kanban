@@ -11,8 +11,8 @@
         public string? CrdDescription { get; set; }
         public DateTime CrdCreateDate { get; set; }
         public DateTime? CrdExpectedDate { get; set; }
-        public TimeOnly CrdEstimatedTime { get; set; }
-        public TimeOnly? CrdBalanceTime { get; set; }
+        public long CrdEstimatedTime { get; set; }
+        public long? CrdBalanceTime { get; set; }
         public DateTime? CrdUpdateDate { get; set; }
 
         public virtual Group Grp { get; set; } = null!;

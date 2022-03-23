@@ -4,12 +4,14 @@ import { ClockCircleOutlined } from '@ant-design/icons';
 import { CardItem, ModalCard, AddGroup } from '../../components';
 import api from '../../services/api';
 
-export default function Index({form, title, time, quantity, onCreateCard, team, grpId }) {
+export default function Index({ form, title, time, quantity, onCreateCard, team, grpId, update }) {
     const [visibleModal, setVisibleModal] = useState(false);
     const [cards, setCards] = useState([]);
 
-    useEffect(()=>getCards(),[]);
-    
+    useEffect(() => getCards(), [update]);
+    useEffect(() => getCards(), []);
+
+
     const getCards = async () => {
         const response = await api.get(`Card?grpId=${grpId}`);
         console.log('response lista de cardssssss ===> ', response)
@@ -31,13 +33,14 @@ export default function Index({form, title, time, quantity, onCreateCard, team, 
                 </div>
             </div>
             <div className="list-cards">
-                {cards.map((item, idx)=> <CardItem key={idx} data={item} />)}
-                
+                {cards.map((item, idx) => <CardItem key={idx} data={item} />)}
+
                 <AddGroup title="Add Card + " onHandleClick={() => setVisibleModal(true)} />
             </div>
             <ModalCard
-            form={form}
+                form={form}
                 grpId={grpId}
+                sequence={cards.length + 1}
                 team={team}
                 onSave={onCreateCard}
                 showModal={visibleModal}

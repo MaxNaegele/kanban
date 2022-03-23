@@ -1,6 +1,6 @@
 C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\bin\Debug\net6.0\kanban.Core.deps.json
+C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\bin\Debug\net6.0\kanban.Core.runtimeconfig.json
 C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\bin\Debug\net6.0\kanban.Core.dll
-C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\bin\Debug\net6.0\ref\kanban.Core.dll
 C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\bin\Debug\net6.0\kanban.Core.pdb
 C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\obj\Debug\net6.0\kanban.Core.csproj.AssemblyReference.cache
 C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\obj\Debug\net6.0\kanban.Core.GeneratedMSBuildEditorConfig.editorconfig
@@ -8,5 +8,7 @@ C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\obj\Debug\net6.0
 C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\obj\Debug\net6.0\kanban.Core.AssemblyInfo.cs
 C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\obj\Debug\net6.0\kanban.Core.csproj.CoreCompileInputs.cache
 C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\obj\Debug\net6.0\kanban.Core.dll
-C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\obj\Debug\net6.0\ref\kanban.Core.dll
+C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\obj\Debug\net6.0\refint\kanban.Core.dll
 C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\obj\Debug\net6.0\kanban.Core.pdb
+C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\obj\Debug\net6.0\kanban.Core.genruntimeconfig.cache
+C:\Users\maxna\Documents\Projetos\kanban\kanban\_04.kanban.Core\obj\Debug\net6.0\ref\kanban.Core.dll

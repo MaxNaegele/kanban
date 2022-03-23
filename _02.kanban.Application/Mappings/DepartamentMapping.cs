@@ -9,7 +9,7 @@ namespace _02.kanban.Application.Mappings
         public DepartamentMapping()
         {
             CreateMap<DepartamentView, Departament>()
-            .ForMember(dst => dst.DptCreateDate, map=> map.MapFrom(_ => DateTime.Now));
+            .ForMember(dst => dst.DptCreateDate, map=> map.MapFrom(_ => DateTime.Now)).ReverseMap();
         }
     }
 }

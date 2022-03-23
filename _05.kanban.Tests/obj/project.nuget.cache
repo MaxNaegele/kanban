@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TvQAH+b5/JeGXKQ1jxlA0LKEZisS0JIaGnQsC0EbcSPfZRvJZQTJduv6DvDXcSlnsPTHNYtQfLctZLn/rH+HTw==",
+  "dgSpecHash": "cvb5JedoHzF6e5+XOwu3yaI4O3FNfeKKe1qun6mhXViGCiUK4OcztqF2fGgsNw4kjLz/cl5DUS9TW+LI3O/7Og==",
   "success": true,
-  "projectFilePath": "C:\\Users\\maxna\\Documents\\Projetos\\kanban\\kanban\\kanban.Tests\\kanban.Tests.csproj",
+  "projectFilePath": "C:\\Users\\maxna\\Documents\\Projetos\\kanban\\kanban\\_05.kanban.Tests\\kanban.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\maxna\\.nuget\\packages\\coverlet.collector\\3.1.0\\coverlet.collector.3.1.0.nupkg.sha512",
     "C:\\Users\\maxna\\.nuget\\packages\\microsoft.codecoverage\\16.11.0\\microsoft.codecoverage.16.11.0.nupkg.sha512",

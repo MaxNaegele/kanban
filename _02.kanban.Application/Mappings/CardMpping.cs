@@ -9,11 +9,13 @@ namespace _02.kanban.Application.Mappings
         public CardMpping()
         {
             CreateMap<CardView, Card>()
-            .ForMember(dst => dst.CrdCreateDate, map => map.MapFrom(_ => DateTime.Now))
             .ForMember(dst => dst.CrdBalanceTime, map => map.MapFrom(src => ParseStringTimeOnly(src.CrdBalanceTime)))
-            .ForMember(dst => dst.CrdEstimatedTime, map => map.MapFrom(src => ParseStringTimeOnly(src.CrdEstimatedTime)));
-        }
+            .ForMember(dst => dst.CrdEstimatedTime, map => map.MapFrom(src => ParseStringTimeOnly(src.CrdEstimatedTime)))
+            .ReverseMap();
 
+            CreateMap<Card, CardResponseView>();
+
+        }
         private TimeOnly? ParseStringTimeOnly(string? value)
         {
             if (String.IsNullOrEmpty(value))
@@ -23,5 +25,6 @@ namespace _02.kanban.Application.Mappings
             return time;
 
         }
+
     }
 }

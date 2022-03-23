@@ -12,7 +12,7 @@ export default function Index() {
     const location = useLocation();
     const [form] = Form.useForm();
     const [groups, setGroups] = useState([]);
-    const [searchCards, setSearchCards] = useState("");
+    const [updateList, setUpdateList] = useState(false);
     const [collaborators, setCollaborators] = useState([]);
 
     useEffect(() => {
@@ -55,13 +55,16 @@ export default function Index() {
             values.Stt = getStatus(values.SttId);
             delete values.SttId;
             values.Dpts = [{DptName: values.DptName}];
-            values.Uses = values.Uses.map((x) => JSON.parse(x));
+            delete values.DptName;
+            values.Uses = [];//values.Uses.map((x) => JSON.parse(x));
             values.CrdExpectedDate = new Date(values.CrdExpectedDate);
             values.CrdEstimatedTime = new Date(values.CrdEstimatedTime).toTimeString();
             let result = await api.post(`Card`, values);
-            
+            debugger
             form.resetFields();
-            setVisibleModal(false);
+            loadGroups();
+            setUpdateList((prev)=> prev = !updateList);
+
 
             console.log('values', values);
             console.log('result', result);
@@ -91,6 +94,7 @@ export default function Index() {
         <div className='container-group'>
             {groups.map((data, idx) => <Group
                 key={idx}
+                update={updateList}
                 form={form}
                 grpId={data.grpId}
                 team={collaborators}

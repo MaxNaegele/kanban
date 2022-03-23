@@ -24,14 +24,9 @@ public class CardController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] CardView card)
     {
-        try
-        {
-            return Ok(await _ICardApplication.Create(card));
-        }
-        catch (System.Exception ex)
-        {
-            return BadRequest(ex);
-        }
+
+        await _ICardApplication.Create(card);
+        return Ok();
     }
     [HttpPut]
     public async Task<IActionResult> Pust([FromBody] CardUpdateView card)

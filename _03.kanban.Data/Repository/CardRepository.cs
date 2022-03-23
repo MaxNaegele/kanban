@@ -14,7 +14,7 @@ namespace _03.kanban.Data.Repository
         public override async Task<Card> InsertAsync(Card entity)
         {
             await base.InsertAsync(entity);
-            await InsertTeamCard(entity);
+            //await InsertTeamCard(entity);
             return entity;
         }
 

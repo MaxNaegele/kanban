@@ -3,21 +3,21 @@ import './card.css';
 import { CalendarOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import LetteredAvatar from 'react-lettered-avatar';
 import { ButtonStatus } from '../../components';
-export default function Index({ data: { } }) {
+export default function Index({ data: { crdId, dpts, crdTitle, crdExpectedDate, crdDescription, crdEstimatedTime, stt, uses } }) {
     return (
         <div className="container-master-card">
             <div className="container-card">
                 <div className="head01">
                     <div>
-                        <div className="font-label01 head02">DESENVOLVIMENTO</div>
+                        {dpts.map((item) => <div className="font-label01 head02">{item.dptName}</div>)}
                     </div>
                     <div className="head03">
                         <small>Código:</small>
-                        <span>#12356</span>
+                        <span>#{crdId}</span>
                     </div>
                 </div>
                 <div className="titl01">
-                    <span className="font-label1">CRIAR MIGRATION</span>
+                    <span className="font-label1">{crdTitle}</span>
                 </div>
                 <div className="prj01">
                     <div className="prj02">
@@ -28,14 +28,14 @@ export default function Index({ data: { } }) {
                         <small>Prevista:</small>
                         <div className="prj03 font-label1">
                             <CalendarOutlined />
-                            <span className="m-g-l">30/12/2022</span>
+                            <span className="m-g-l">{new Date(crdExpectedDate).toLocaleDateString()}</span>
                         </div>
                     </div>
                 </div>
                 <div className="bd01">
                     <div>
                         <small>Descrição:</small>
-                        <p>Usar um pull request, master apos isso dnasd daskdndd kdsadkn dsnd dnsdan kdnasdnd</p>
+                        <p>{crdDescription}</p>
                     </div>
                 </div>
             </div>
@@ -50,11 +50,11 @@ export default function Index({ data: { } }) {
                         </div>
                         <div className="prj02">
                             <small>Previsto:</small>
-                            <span className="font-label1">05:45</span>
+                            <span className="font-label1">{crdEstimatedTime}</span>
                         </div>
                     </div>
                     <div className="head03">
-                        <ButtonStatus description={"EM ATRASO"} />
+                        <ButtonStatus description={stt.sttDescription} color={stt.sttColor} />
                     </div>
                 </div>
                 <div className="prj01">
@@ -70,8 +70,7 @@ export default function Index({ data: { } }) {
                     <div className="head03">
                         <small>Equipe:</small>
                         <div className="prj03">
-                            <LetteredAvatar size={23} color="#FFF" backgroundColor="#00000080" name="Max " />
-                            <LetteredAvatar size={23} color="#FFF" backgroundColor="#00000080" name="Max Naegele" />
+                            {uses.map((item) => <LetteredAvatar size={23} color="#FFF" backgroundColor="#00000080" name={item.name} />)}
                         </div>
                     </div>
                 </div>
